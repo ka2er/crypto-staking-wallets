@@ -6,24 +6,28 @@ Build
 [ ] start wallet service in image
 [ ] docker push to upgrade - tag
 [ ] seamless upgrade without loosing funds
+[?] toggle debug mode while running
 
 Run
 ---
 
 [x] coin as input of script
-[ ] install softs
-[ ] get receiving address
-[ ] backup wallet
-[ ] unencrypt wallet
-[ ] start.stop wallet
-[ ] wallet status
+[x] install softs (python-docker, docker image)
+[w] init RPC mode (user+pass)
+[ ] deploy tools to interact easily with container
+  [x] bash debug.sh
+  [ ] wallet-cli wrapper
+    - get adress
+    - backup
+    - unencrypt
+    - start/stop
+    - status
 
-
-
-Questions to sort
------------------
+Questions to sort-out
+---------------------
 
 ansible :
 
 [ ] how to run only selective tasks
+[ ] print task command output (public adress)
 
