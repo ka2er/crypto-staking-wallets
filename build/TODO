@@ -1,0 +1,12 @@
+- check alqod data dir if user running is alqo /home/alqo ???
+
+- industrialize docker image build
+ - publish
+ - templating
+  - compose
+  - dockerfile
+
+- check CMD ???
+ - getadress
+ - inspaect via bash
+ - ...

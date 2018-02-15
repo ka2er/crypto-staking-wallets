@@ -1,0 +1,13 @@
+- install softs
+- get receiving address
+- backup wallet
+- unencrypt wallet
+- start.stop wallet
+- wallet status
+
+
+
+ansible :
+
+- how to run only one task
+

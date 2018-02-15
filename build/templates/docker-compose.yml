@@ -1,0 +1,7 @@
+version: '2'
+services:
+  alqo:
+    build: .
+    image: ka2er/crypto-wallet-alqo:latest
+    volumes:
+      - /%path%/data:/home/wallet

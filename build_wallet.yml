@@ -1,0 +1,63 @@
+---
+- hosts: all
+  vars:
+   wallet: alqo
+   wallet_image: ka2er/crypto-wallet-alqo
+  gather_facts: no
+  tasks:
+  - name: generate a Dockefile template
+  - name: generate a docker-compose template
+  
+  
+  - name: create local guest wallet data directory
+    file:
+      path: "/tmp/data/{{ wallet }}"
+      state: directory
+      mode: 0755
+  - name: check python docker is present
+    package:
+      name: 
+        - "python-pip"
+        - "python-docker"
+      state: latest
+  - name: 'Install docker-py'
+    pip:
+      name: docker-py
+      state: latest
+  - name: get wallet docker image
+    docker_image:
+      name: "{{ wallet_image }}"
+      state: present
+  - name: start wallet
+    docker_container:
+      name: "{{ wallet }}_wallet"
+      image: "{{ wallet_image }}"
+      state: started
+      volumes: 
+        "/tmp/data/{{ wallet }}:/home"
+    #  - name: write the quagga config file
+    #template: src=quagga.j2 dest=/etc/quagga/Quagga.conf
+    #notify:
+    #- restart quagga
+    # - name: ensure quagga is running
+    #service: name=quagga state=started
+    #handlers:
+    #- name: restart quagga
+    #  service: name=quagga state=restarted
+
+
+# generate Dockerfile Template
+
+# generate docker-compose Template
+
+# generate run script
+run.sh
+
+# docker build it
+docker compose build
+
+# docker login ???
+
+# docker push it
+docker push ka2er/crypto-wallet-alqo:latest
+

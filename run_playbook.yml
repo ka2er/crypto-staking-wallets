@@ -1,0 +1,63 @@
+---
+- hosts: all
+  vars:
+          #   wallet: alqo
+   wallet_image: "ka2er/crypto-wallet-{{ wallet }}"
+  become: yes
+  become_method: sudo
+  gather_facts: false
+  #become_ask_pass: true
+  #remote_user: root
+  tasks:
+  - name: create local guest wallet data directory
+    file:
+      path: "/tmp/data/{{ wallet }}/.{{ wallet }}"
+      state: directory
+      mode: 0755
+      recurse: yes
+  - name: check python docker is present
+    package:
+      name: 
+        - "python-docker"
+      state: latest
+#  - name: 'Install docker-py'
+#    pip:
+#      name: docker-py
+#      state: latest
+  - name: "get wallet docker image ({{ wallet_image }})"
+    docker_image:
+      name: "{{ wallet_image }}"
+      state: present
+      force: yes
+  - name: start wallet
+    docker_container:
+      name: "{{ wallet }}_wallet"
+      image: "{{ wallet_image }}"
+      state: started
+      volumes: 
+        "/tmp/data/{{ wallet }}:/home/wallet"
+#  - name: check user permissions
+  - name: Config set staking mode
+    copy:
+      src: run/template.conf
+      dest: "/tmp/data/{{ wallet }}/.{{ wallet}}/{{ wallet }}.conf"
+      backup: yes
+  - name: Allow RPC on wallet  
+    command: "docker exec -u wallet {{ wallet }}_wallet /usr/local/bin/{{ wallet }}d 2>&1 >/dev/null | grep ^rpc >> /home/wallet/.{{ wallet }}/{{ wallet }}.conf"      
+  
+  - name: get wallet public address
+#    command: "docker exec -u wallet {{ wallet }}_wallet bash -l -c /usr/local/bin/{{ wallet }}-cli getaddress ''"
+    command: "docker exec -u wallet {{ wallet }}_wallet /usr/local/bin/{{ wallet }}-cli getaddress ''"
+
+#  - name: encrypt wallet
+#  - name: unlock wallet
+#  - name: backup wallet
+    #  - name: write the quagga config file
+    #template: src=quagga.j2 dest=/etc/quagga/Quagga.conf
+    #notify:
+    #- restart quagga
+    # - name: ensure quagga is running
+    #service: name=quagga state=started
+    #handlers:
+    #- name: restart quagga
+    #  service: name=quagga state=restarted
