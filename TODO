@@ -10,12 +10,15 @@ Build
 Run
 ---
 
+[x] coin as input of script
 [ ] install softs
 [ ] get receiving address
 [ ] backup wallet
 [ ] unencrypt wallet
 [ ] start.stop wallet
 [ ] wallet status
+
+
 
 Questions to sort
 -----------------

@@ -13,7 +13,7 @@ Here you will find script attempt to :
 
 - Ansible
 - Docker
-
+- getops (brew install getopts)
 
 ## Building (optional)
 
