@@ -5,7 +5,7 @@ Build
 [ ] task to build
 [ ] start wallet service in image
 [ ] docker push to upgrade - tag
-
+[ ] seamless upgrade without loosing funds
 
 Run
 ---
@@ -22,5 +22,5 @@ Questions to sort
 
 ansible :
 
-[ ] how to run only one task
+[ ] how to run only selective tasks
 
