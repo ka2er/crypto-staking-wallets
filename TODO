@@ -1,13 +1,26 @@
-- install softs
-- get receiving address
-- backup wallet
-- unencrypt wallet
-- start.stop wallet
-- wallet status
+Build
+-----
+
+[ ] generic script and template for easy add new coins
+[ ] task to build
+[ ] start wallet service in image
+[ ] docker push to upgrade - tag
 
 
+Run
+---
+
+[ ] install softs
+[ ] get receiving address
+[ ] backup wallet
+[ ] unencrypt wallet
+[ ] start.stop wallet
+[ ] wallet status
+
+Questions to sort
+-----------------
 
 ansible :
 
-- how to run only one task
+[ ] how to run only one task
 
