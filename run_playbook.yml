@@ -11,14 +11,19 @@
   tasks:
   - name: "create local guest wallet data directory : {{ wallet_path }}"
     file:
-      path: "{{ wallet_path }}"
+      path: "{{ wallet_path }}/.{{ wallet }}"
       state: directory
       mode: 0755
       recurse: yes
-  - name: "deploy tools"
+  - name: "deploy tools - debug"
     template:
       src: run/debug.sh.j2
       dest: "{{ wallet_path }}/debug.sh"
+      mode: 0755
+  - name: "deploy tools - logs"
+    template:
+      src: run/logs.sh.j2
+      dest: "{{ wallet_path }}/logs.sh"
       mode: 0755
   - name: check python-docker is present
     package:

@@ -16,6 +16,7 @@ Run
 [w] init RPC mode (user+pass)
 [ ] deploy tools to interact easily with container
   [x] bash debug.sh
+  [x] logs
   [ ] wallet-cli wrapper
     - get adress
     - backup
