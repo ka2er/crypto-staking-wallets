@@ -1,0 +1,36 @@
+---
+- hosts: build
+  vars:
+   wallet_image: "ka2er/crypto-wallet-{{ wallet }}"
+   wallet_path: "{{ data_path }}/{{ wallet }}"
+   build_path: "/tmp/build-{{ wallet }}"
+#  become: yes
+#  become_method: sudo
+#  gather_facts: false
+  #become_ask_pass: true
+  #remote_user: root
+  tasks:
+  - name: "create local wallet build directory : {{ build_path }}"
+    file:
+      path: "{{ build_path }}"
+      state: directory
+      mode: 0755
+      recurse: yes
+  - name: "deploy Dockerfile"
+    template:
+      src: build/Dockerfile.j2
+      dest: "{{ build_path }}/Dockerfile"
+      mode: 0755
+  - name: "deploy docker-compose.yml"
+    template:
+      src: build/docker-compose.yml.j2
+      dest: "{{ build_path }}/docker-compose.yml"
+      mode: 0755
+    
+    
+#  - name: Build an image and push it to a private repo
+#    docker_image:
+#      path: ./sinatra
+#      name: registry.ansible.com/chouseknecht/sinatra
+#      tag: test
+#      push: yes

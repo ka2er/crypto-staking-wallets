@@ -2,9 +2,13 @@ Build
 -----
 
 [ ] generic script and template for easy add new coins
-[ ] task to build
+[x] deploy docker recipes to build host
+[ ] task to build - docker-compose build
+[ ] docker push
+[ ] handle tag increment
 [ ] start wallet service in image
-[ ] docker push to upgrade - tag
+[ ] store generated dockerfile in git repo
+[ ] git commit/push dockerfile repo
 [ ] seamless upgrade without loosing funds
 [?] toggle debug mode while running
 
@@ -14,6 +18,7 @@ Run
 [x] coin as input of script
 [x] install softs (python-docker, docker image)
 [w] init RPC mode (user+pass)
+[ ] keep sudo password in temporary memory (for dev)
 [ ] deploy tools to interact easily with container
   [x] bash debug.sh
   [x] logs

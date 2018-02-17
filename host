@@ -1,2 +1,6 @@
 # a file that contains deployment host
-mytargethost
+[build]
+mybuildtargethost
+
+[run]
+myruntargethost

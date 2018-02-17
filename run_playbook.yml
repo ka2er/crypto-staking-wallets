@@ -1,5 +1,5 @@
 ---
-- hosts: all
+- hosts: run
   vars:
    wallet_image: "ka2er/crypto-wallet-{{ wallet }}"
    wallet_path: "{{ data_path }}/{{ wallet }}"
